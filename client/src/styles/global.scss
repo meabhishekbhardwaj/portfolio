@@ -1,0 +1,44 @@
+$breakpoints: (
+  xs: 320px,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1536px,
+);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #fafafa;
+  --text-color: #0e0e11;
+  --bg-pattern: url("../assets/background_light.svg");
+  --highlight-color: #6440ff;
+}
+.dark-mode {
+  --bg-color: #0d1117;
+  --text-color: #ffffff;
+  --bg-pattern: url("../assets//background_dark.svg");
+}
+body {
+  background-color: var(--bg-color);
+  background-image: var(--bg-pattern);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5rem;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
