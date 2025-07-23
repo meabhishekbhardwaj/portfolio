@@ -8,88 +8,55 @@ const Navbar = () => {
     document.body.classList.toggle("dark-mode");
   };
   const handleMenuToggle = () => {
-    console.log("isMenuOpen", isMenuOpen);
     setIsMenuOpen(!isMenuOpen);
   };
+  const navItems = [
+    { to: "hero", label: "Home" },
+    { to: "services", label: "Services" },
+    { to: "works", label: "Works" },
+    { to: "about", label: "About Me" },
+    { to: "contact", label: "Contact Me" },
+  ];
   return (
     <header>
       <nav className="navbar">
-        <div className="name">
-          Abhishek<span>.</span>
+        <div className="navbar-content">
+          <div className="name">
+            Abhishek<span>.</span>
+          </div>
+          <div className="right-buttons">
+            <button
+              className="menu-toggle"
+              onClick={handleMenuToggle}
+              aria-label="menu-toggle"
+            >
+              ☰
+            </button>
+            <button
+              className="dark-mode-toggle"
+              onClick={toggleDarkMode}
+              aria-label="Toggle dark mode"
+            >
+              🌓
+            </button>
+          </div>
         </div>
         <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-          <li>
-            <Link
-              to="hero"
-              smooth={true}
-              duration={500}
-              spy={true}
-              activeClass="active"
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="services"
-              smooth={true}
-              duration={500}
-              spy={true}
-              activeClass="active"
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="works"
-              smooth={true}
-              duration={500}
-              spy={true}
-              activeClass="active"
-            >
-              Works
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="about"
-              smooth={true}
-              duration={500}
-              spy={true}
-              activeClass="active"
-            >
-              About Me
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="contact"
-              smooth={true}
-              duration={500}
-              spy={true}
-              activeClass="active"
-            >
-              Contact Me
-            </Link>
-          </li>
+          {navItems.map(({ to, label }) => (
+            <li key={to}>
+              <Link
+                to={to}
+                smooth={true}
+                duration={500}
+                spy={true}
+                activeClass="active"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
         </ul>
-        <div className="right-buttons">
-          <button
-            className="menu-toggle"
-            onClick={handleMenuToggle}
-            aria-label="menu-toggle"
-          >
-            ☰
-          </button>
-          <button
-            className="dark-mode-toggle"
-            onClick={toggleDarkMode}
-            aria-label="Toggle dark mode"
-          >
-            🌓
-          </button>
-        </div>
       </nav>
     </header>
   );

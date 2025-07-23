@@ -1,77 +1,84 @@
 .navbar {
+  z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  min-width: 320px;
+  flex-direction: column;
+  justify-content: flex-start;
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: center;
+  }
 
   .name {
+    margin: 0.5rem 1rem;
     font-size: 1.5rem;
     font-weight: bold;
     span {
       color: var(--highlight-color);
     }
-    transition: color 0.3s ease;
   }
   .right-buttons {
+    margin: 0.5rem 1rem;
     display: flex;
     gap: 0.5rem;
   }
 
   .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    overflow: hidden;
-    opacity: 0;
     max-height: 0;
-    transition: all 0.4s ease-in-out;
+    opacity: 0;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
 
-    li a {
-      color: var(--text-color);
-      cursor: pointer;
-      transition: color 0.3s ease;
+    li {
+      margin: 0.5rem 1rem;
+      a {
+        color: var(--text-color);
+        cursor: pointer;
 
-      &.active {
-        font-weight: bold;
-        color: var(--highlight-color); // Optional highlight for active
-      }
+        &.active {
+          font-weight: bold;
+          color: var(--highlight-color); // Optional highlight for active
+        }
 
-      &:hover {
-        color: var(--highlight-color);
+        &:hover {
+          color: var(--highlight-color);
+        }
       }
     }
     &.open {
-      display: flex;
-      max-height: 500px;
       opacity: 1;
+      max-height: none;
+      display: flex;
     }
   }
 }
 
 @media (min-width: 768px) {
   .navbar {
-    .menu-toggle {
+    flex-direction: row;
+    .right-buttons {
       display: none;
     }
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    .navbar-top {
-      flex: 1;
-    }
     .nav-links {
-      flex-direction: row;
+      transition: none;
       max-height: none;
+      display: flex;
       opacity: 1;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
     }
   }
 }
